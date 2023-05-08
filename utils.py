@@ -8,11 +8,14 @@ def parse_input(file_path: str) -> tuple[list[str], list[Path]]:
     
     res = []
     node_set = set()
+    gotten_paths = []
 
     for p in paths:
         v = p.split(' ')
         node_set.add(v[0])
         node_set.add(v[2])
+        if tuple(sorted((v[0], v[2]))) in gotten_paths:
+            continue   
         v[0] = Node(v[0])
         v[1] = int(v[1])
         v[2] = Node(v[2])
