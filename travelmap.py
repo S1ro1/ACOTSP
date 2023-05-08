@@ -16,8 +16,6 @@ class Map:
             ant = Ant(sn, self.paths[:], self.nodes[:])
             paths = ant.run()
         
-        print(sn)
-        print(paths)
         
 
 

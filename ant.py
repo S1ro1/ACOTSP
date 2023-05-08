@@ -11,12 +11,10 @@ class Ant:
         self.all_nodes = nodes
 
     def run(self):
-        self.visited.append(self.starting_node)
-
         res = []
         node = self.starting_node
         while len(self.visited) != len(self.all_nodes):
-            possible_paths = [p for p in self.map if p == node and p.origins[0].name]
+            possible_paths = [p for p in self.map if p == node]
             possible_paths = [p for p in possible_paths if not (p.origins[0] == node and p.origins[1] in self.visited or p.origins[1] == node and p.origins[0] in self.visited)]
 
             desirabilities = [1/p.distance for p in possible_paths]
@@ -31,7 +29,8 @@ class Ant:
             res.append(path)
         
         total_length = sum([p.distance for p in res])
-        print(total_length)
+        print(self.starting_node)
+        print(res)
         
         return res
 
