@@ -19,7 +19,10 @@ class Map:
         shortest_path = None
         min_length = 999999
 
-        for iteration in tqdm(range(num_iterations)):
+        bar = tqdm(range(num_iterations))
+
+        for iteration in bar:
+
             Q = 10
 
             visited_paths = defaultdict(lambda: 0)
@@ -41,7 +44,6 @@ class Map:
                 self.paths[i].feromone = (
                     1 - self.fi) * self.paths[i].feromone + visited_paths[self.paths[i]]
 
-            if iteration % 100 == 0:
-                print(min_length)
+            bar.set_postfix({'min_len': min_length})
 
-        return shortest_path, length
+        return shortest_path, min_length

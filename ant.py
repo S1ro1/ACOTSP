@@ -29,7 +29,6 @@ class Ant:
 
             products = [p.feromone ** self.alpha * d **
                         self.beta for p, d in zip(possible_paths, desirabilities)]
-                
 
             probs = [p / sum(products) for p in products]
             path = possible_paths[np.random.multinomial(

@@ -1,11 +1,12 @@
 from path import Path, Node
 
+
 def parse_input(file_path: str) -> tuple[list[str], list[Path]]:
     with open(file_path, 'r') as f:
         paths = f.readlines()
-    
+
     paths = [p.strip() for p in paths]
-    
+
     res = []
     node_set = set()
     gotten_paths = []
@@ -15,14 +16,15 @@ def parse_input(file_path: str) -> tuple[list[str], list[Path]]:
         node_set.add(v[0])
         node_set.add(v[2])
         if tuple(sorted((v[0], v[2]))) in gotten_paths:
-            continue   
+            continue
         v[0] = Node(v[0])
         v[1] = int(v[1])
         v[2] = Node(v[2])
         res.append(Path(*v, 1/len(paths)))
-    
+
     return list(node_set), res
-    
 
 
-    
+def pprint_path(paths: list[Path]):
+    for p in paths:
+        print(f"({p.feromone}) {p.origins[0]} - {p.origins[1]} [{p.distance}]")
