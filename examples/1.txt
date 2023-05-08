@@ -1,0 +1,10 @@
+A 60 B
+A 100 C
+A 50 D
+A 90 E
+B 70 C
+B 40 D
+B 30 E
+C 65 D
+C 55 E
+D 110 E
